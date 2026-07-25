@@ -11,7 +11,6 @@ import {
   ArrowRight,
   Flame,
   User,
-  Mail,
 } from 'lucide-react';
 
 interface CheckoutModalProps {
@@ -22,22 +21,10 @@ interface CheckoutModalProps {
 
 const WHATSAPP_NUMBER = '15513090145';
 
-const nicheLabels: Record<string, string> = {
-  tech: 'Tecnología & Software',
-  gaming: 'Gaming & Streaming',
-  finance: 'Finanzas & Negocios',
-  vlogs: 'Vlogs & Estilo de Vida',
-  fitness: 'Fitness & Salud',
-  education: 'Educación & Tutoriales',
-  other: 'Otro Nicho',
-};
-
 export default function CheckoutModal({ isOpen, onClose, remainingSlots }: CheckoutModalProps) {
   const [channelName, setChannelName] = useState('');
   const [channelUrl, setChannelUrl] = useState('');
-  const [selectedNiche, setSelectedNiche] = useState('tech');
-  const [contactEmail, setContactEmail] = useState('');
-  const [notes, setNotes] = useState('');
+  const [projectNeeds, setProjectNeeds] = useState('');
 
   const handleSubmitOrder = (event: React.FormEvent) => {
     event.preventDefault();
@@ -47,9 +34,7 @@ export default function CheckoutModal({ isOpen, onClose, remainingSlots }: Check
       '',
       `Canal / proyecto: ${channelName}`,
       `Enlace o @handle: ${channelUrl || 'No indicado'}`,
-      `Temática: ${nicheLabels[selectedNiche]}`,
-      `Email: ${contactEmail}`,
-      `Indicaciones: ${notes || 'Sin indicaciones adicionales'}`,
+      `Qué necesito / temática: ${projectNeeds}`,
     ].join('\n');
 
     window.open(
@@ -123,9 +108,10 @@ export default function CheckoutModal({ isOpen, onClose, remainingSlots }: Check
                     <label className="block text-xs font-bold text-slate-300 uppercase mb-1">
                       Enlace o @Handle de YouTube / Redes
                     </label>
-                    <input
-                      type="text"
-                      value={channelUrl}
+                      <input
+                        type="text"
+                        required
+                        value={channelUrl}
                       onChange={(event) => setChannelUrl(event.target.value)}
                       placeholder="youtube.com/@tucanal"
                       className="w-full bg-[#121613] border border-slate-700 focus:border-[#8bf500] text-white px-4 py-3 rounded-xl text-sm outline-none transition-all"
@@ -133,53 +119,16 @@ export default function CheckoutModal({ isOpen, onClose, remainingSlots }: Check
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-bold text-slate-300 uppercase mb-1">
-                      Tu Temática / Nicho Principal
-                    </label>
-                    <select
-                      value={selectedNiche}
-                      onChange={(event) => setSelectedNiche(event.target.value)}
-                      className="w-full bg-[#121613] border border-slate-700 focus:border-[#8bf500] text-white px-4 py-3 rounded-xl text-sm font-semibold outline-none transition-all"
-                    >
-                      <option value="tech">Tecnología & Software</option>
-                      <option value="gaming">Gaming & Streaming</option>
-                      <option value="finance">Finanzas & Negocios</option>
-                      <option value="vlogs">Vlogs & Estilo de Vida</option>
-                      <option value="fitness">Fitness & Salud</option>
-                      <option value="education">Educación & Tutoriales</option>
-                      <option value="other">Otro Nicho</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-slate-300 uppercase mb-1">
-                      Tu Correo Electrónico *
-                    </label>
-                    <div className="relative">
-                      <Mail className="absolute left-3.5 top-3.5 w-4 h-4 text-slate-500" />
-                      <input
-                        type="email"
-                        required
-                        value={contactEmail}
-                        onChange={(event) => setContactEmail(event.target.value)}
-                        placeholder="tu@email.com"
-                        className="w-full bg-[#121613] border border-slate-700 focus:border-[#8bf500] text-white pl-10 pr-4 py-3 rounded-xl text-sm font-semibold outline-none transition-all"
-                      />
-                    </div>
-                  </div>
-                </div>
-
                 <div>
                   <label className="block text-xs font-bold text-slate-300 uppercase mb-1">
-                    ¿Algún color, idea o detalle preferido? (Opcional)
+                    ¿Qué necesitas o cuál es la temática? *
                   </label>
                   <textarea
-                    rows={2}
-                    value={notes}
-                    onChange={(event) => setNotes(event.target.value)}
-                    placeholder="Ej. Prefiero colores neón verdes y amarillos, mi canal trata de reviews..."
+                    rows={3}
+                    required
+                    value={projectNeeds}
+                    onChange={(event) => setProjectNeeds(event.target.value)}
+                    placeholder="Ej. Mi canal es de tecnología y necesito un estilo moderno con colores neón..."
                     className="w-full bg-[#121613] border border-slate-700 focus:border-[#8bf500] text-white px-4 py-2.5 rounded-xl text-sm outline-none transition-all"
                   />
                 </div>
@@ -209,7 +158,7 @@ export default function CheckoutModal({ isOpen, onClose, remainingSlots }: Check
                   className="w-full bg-[#25D366] hover:bg-[#20ba59] text-black font-heading font-black text-lg py-4 rounded-2xl shadow-xl shadow-[#25D366]/20 hover:scale-[1.01] transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <MessageSquare className="w-5 h-5 fill-black" />
-                  <span>ENVIAR MI PEDIDO POR WHATSAPP</span>
+                  <span>SOLICITAR MI PACK POR WHATSAPP</span>
                   <ArrowRight className="w-5 h-5" />
                 </button>
 

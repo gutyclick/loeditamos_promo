@@ -114,7 +114,7 @@ export default function BenefitsSection({ onOpenCheckout }: BenefitsProps) {
 
                 <div className="mt-6 pt-4 border-t border-slate-800/60 flex items-center gap-2 text-xs font-bold text-[#8bf500]">
                   <CheckCircle2 className="w-4 h-4 text-[#8bf500]" />
-                  <span>Incluido en tu pedido de $5 USD</span>
+                  <span>Incluido en tu Pack de $5 USD</span>
                 </div>
               </motion.div>
             );
@@ -143,7 +143,7 @@ export default function BenefitsSection({ onOpenCheckout }: BenefitsProps) {
               className="w-full sm:w-auto bg-[#8bf500] hover:bg-[#9eff00] text-black font-heading font-black text-lg px-10 py-4 rounded-2xl shadow-xl shadow-[#8bf500]/30 hover:scale-[1.03] transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
               <Zap className="w-5 h-5 fill-black" />
-              <span>SÍ, QUIERO MI PACK CREADOR POR $5 USD</span>
+              <span>SOLICITAR MI PACK POR WHATSAPP</span>
               <ArrowRight className="w-5 h-5" />
             </button>
           </div>

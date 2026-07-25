@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import {
   ShieldCheck,
   Zap,
@@ -41,8 +42,8 @@ export default function GuaranteeFooter({ onOpenCheckout }: { onOpenCheckout: ()
               <div className="bg-[#151b16] border border-slate-800 p-3.5 rounded-2xl flex items-center gap-2.5">
                 <ShieldCheck className="w-5 h-5 text-[#8bf500] shrink-0" />
                 <div className="text-left">
-                  <p className="font-heading font-extrabold text-xs text-white uppercase">PAGO SEGURO</p>
-                  <p className="text-[10px] text-slate-400">Encriptación SSL 256-bit</p>
+                  <p className="font-heading font-extrabold text-xs text-white uppercase">ATENCIÓN DIRECTA</p>
+                  <p className="text-[10px] text-slate-400">Conversación por WhatsApp</p>
                 </div>
               </div>
 
@@ -93,15 +94,29 @@ export default function GuaranteeFooter({ onOpenCheckout }: { onOpenCheckout: ()
               onClick={onOpenCheckout}
               className="bg-[#8bf500] hover:bg-[#9eff00] text-black font-heading font-black text-xs px-5 py-2.5 rounded-xl transition-all shadow-lg shadow-[#8bf500]/20"
             >
-              COMPRAR PACK $5 USD
+              SOLICITAR PACK $5 USD
             </button>
           </div>
         </div>
 
         {/* Legal & Copyright */}
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-400 font-mono">
+        <div className="mt-8 flex flex-col lg:flex-row items-center justify-between gap-4 text-[11px] text-slate-400 font-mono">
           <p>© 2026 LOEDITAMOS. Todos los derechos reservados.</p>
-          <p className="uppercase text-[#8bf500]">APLICAN CONDICIONES* - OFERTA LIMITADA A PRIMEROS 100 USUARIOS</p>
+          <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+            <Link href="/legal#privacidad" className="hover:text-[#8bf500] transition-colors">
+              Privacidad
+            </Link>
+            <Link href="/legal#terminos" className="hover:text-[#8bf500] transition-colors">
+              Términos
+            </Link>
+            <Link href="/legal#reembolsos" className="hover:text-[#8bf500] transition-colors">
+              Reembolsos
+            </Link>
+            <Link href="/legal#revisiones" className="hover:text-[#8bf500] transition-colors">
+              Revisiones
+            </Link>
+          </nav>
+          <p className="uppercase text-[#8bf500]">APLICAN CONDICIONES* - OFERTA LIMITADA</p>
         </div>
 
       </div>

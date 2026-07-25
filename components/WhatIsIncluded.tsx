@@ -167,7 +167,7 @@ export default function WhatIsIncluded({ onOpenCheckout }: WhatIsIncludedProps) 
               ¿Listo para transformar la cara de tu canal?
             </h3>
             <p className="text-slate-300 text-sm sm:text-base mt-2">
-              Llévate el paquete completo de 8 piezas gráficas por un único pago de <strong className="text-[#8bf500] font-bold">$5 USD</strong>. Sin trucos ni cobros recurrentes.
+              Llévate el paquete completo de 8 piezas gráficas por un precio único de <strong className="text-[#8bf500] font-bold">$5 USD</strong>. Sin trucos ni cobros recurrentes.
             </p>
           </div>
 
@@ -177,7 +177,7 @@ export default function WhatIsIncluded({ onOpenCheckout }: WhatIsIncludedProps) 
             className="w-full md:w-auto bg-[#8bf500] hover:bg-[#9eff00] text-black font-heading font-black text-base sm:text-lg px-8 py-4 rounded-2xl shadow-xl shadow-[#8bf500]/30 hover:scale-[1.03] transition-all flex items-center justify-center gap-2 shrink-0 cursor-pointer"
           >
             <Zap className="w-5 h-5 fill-black" />
-            <span>RECLAMAR MI PACK POR $5 USD</span>
+            <span>SOLICITAR MI PACK POR WHATSAPP</span>
           </button>
         </div>
 

@@ -10,7 +10,7 @@ export default function FAQSection() {
   const faqs = [
     {
       q: '¿Cómo entrego la información, fotos o referencias de mi canal?',
-      a: 'Al solicitar tu Pack Creador de $5 USD, se abrirá un formulario inmediato en pantalla donde podrás ingresar el nombre de tu canal, tu temática y tus indicaciones. Al enviarlo, podrás chatear directamente con nuestro equipo de diseño por WhatsApp.',
+      a: 'Al solicitar tu Pack Creador de $5 USD, se abrirá un formulario breve para ingresar el nombre y enlace de tu canal, además de lo que necesitas o su temática. Al enviarlo, podrás chatear directamente con nuestro equipo de diseño por WhatsApp.',
     },
     {
       q: '¿El Pack Creador cuesta realmente $5.00 USD sin suscripciones?',
@@ -22,7 +22,7 @@ export default function FAQSection() {
     },
     {
       q: '¿En cuánto tiempo recibiré mis archivos listos?',
-      a: 'Recibirás el paquete completo en menos de 24 horas contadas a partir de que nos envíes tus datos y referencias.',
+      a: 'El plazo estimado comienza cuando recibimos todos tus datos, materiales y referencias, además de la confirmación del pago coordinado por WhatsApp. A partir de ese momento, recibirás el paquete completo en menos de 24 horas.',
     },
     {
       q: '¿Qué sucede si no tengo canal de YouTube pero uso TikTok, Twitch o Instagram?',
@@ -30,7 +30,7 @@ export default function FAQSection() {
     },
     {
       q: '¿Qué pasa si quiero hacer un cambio en alguno de los diseños?',
-      a: 'Cuentas con nuestra garantía de satisfacción. Si deseas ajustar un texto, cambiar un color o mover un elemento, lo modificamos gratis para asegurarnos de que quedes 100% complacido.',
+      a: 'Se incluyen ajustes menores razonables, como corregir un texto, cambiar un color o mover un elemento. Los rediseños completos, conceptos nuevos, piezas o formatos adicionales pueden requerir una cotización aparte.',
     },
   ];
 

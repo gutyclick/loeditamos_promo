@@ -173,7 +173,7 @@ export default function HeroSection({ remainingSlots, onOpenCheckout }: HeroSect
 
             <div className="flex items-center gap-2 text-xs font-semibold text-slate-300">
               <CheckCircle2 className="w-4 h-4 text-[#8bf500]" />
-              <span>Un Solo Pago Único</span>
+              <span>Precio Único</span>
               <span className="text-slate-600">•</span>
               <CheckCircle2 className="w-4 h-4 text-[#8bf500]" />
               <span>Sin Suscripciones</span>
@@ -193,13 +193,13 @@ export default function HeroSection({ remainingSlots, onOpenCheckout }: HeroSect
               className="w-full sm:w-auto relative group overflow-hidden rounded-2xl bg-[#8bf500] text-black font-heading font-black text-lg sm:text-xl px-8 sm:px-12 py-5 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] shadow-2xl shadow-[#8bf500]/40 hover:shadow-[#8bf500]/70 flex items-center justify-center gap-3 cursor-pointer"
             >
               <Zap className="w-6 h-6 fill-black group-hover:rotate-12 transition-transform" />
-              <span>¡QUIERO MI PACK POR $5 USD AHORA!</span>
+              <span>¡QUIERO MI PACK POR $5 USD!</span>
               <ArrowRight className="w-6 h-6 group-hover:translate-x-1.5 transition-transform" />
             </button>
 
             <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-400 mt-1">
               <span className="flex items-center gap-1">
-                <Shield className="w-3.5 h-3.5 text-[#8bf500]" /> Pago 100% Seguro
+                <Shield className="w-3.5 h-3.5 text-[#8bf500]" /> Atención directa por WhatsApp
               </span>
               <span>•</span>
               <span className="flex items-center gap-1">
@@ -432,7 +432,7 @@ export default function HeroSection({ remainingSlots, onOpenCheckout }: HeroSect
             <div className="flex flex-wrap items-center gap-4 text-xs font-bold text-slate-300">
               <div className="flex items-center gap-1.5 bg-[#121613] px-3 py-1.5 rounded-lg border border-slate-800">
                 <CheckCircle2 className="w-4 h-4 text-[#8bf500]" />
-                <span>PAGO SEGURO</span>
+                <span>ATENCIÓN DIRECTA</span>
               </div>
 
               <div className="flex items-center gap-1.5 bg-[#121613] px-3 py-1.5 rounded-lg border border-slate-800">
