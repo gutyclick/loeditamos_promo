@@ -120,7 +120,7 @@ export default function HeroSection({ remainingSlots, onOpenCheckout }: HeroSect
             <Zap className="w-4 h-4 text-[#8bf500] fill-[#8bf500]" />
             <span>OFERTA LIMITADA A LAS PRIMERAS 100 PERSONAS</span>
             <span className="bg-[#8bf500] text-black px-2 py-0.5 rounded-md font-extrabold text-[11px]">
-              93% OFF
+              89% OFF
             </span>
           </motion.div>
         </div>
@@ -135,7 +135,7 @@ export default function HeroSection({ remainingSlots, onOpenCheckout }: HeroSect
           >
             PAQUETE COMPLETO DE DISEÑO Y PRESENCIA DIGITAL POR SOLO{' '}
             <span className="text-[#8bf500] underline decoration-[#8bf500]/50 decoration-wavy underline-offset-8">
-              $3 USD
+              $5 USD
             </span>
           </motion.h1>
 
@@ -148,7 +148,6 @@ export default function HeroSection({ remainingSlots, onOpenCheckout }: HeroSect
             Obtén <strong className="text-white font-bold">5 Miniaturas de YouTube/Reels</strong>,{' '}
             <strong className="text-white font-bold">1 Banner HD</strong> y{' '}
             <strong className="text-white font-bold">2 Fotos de Perfil Profesional</strong> diseñadas a medida para tu canal o marca.
-            Aumenta tus clics (CTR) y dale una imagen profesional al instante.{' '}
             <span className="text-[#8bf500] font-bold block mt-2">
               ⚡ Recibe todos tus archivos listos en menos de 24 horas.
             </span>
@@ -168,7 +167,7 @@ export default function HeroSection({ remainingSlots, onOpenCheckout }: HeroSect
               </div>
               <div className="text-left">
                 <span className="text-xs text-[#8bf500] font-mono block uppercase font-bold">Precio Promo Hoy</span>
-                <span className="font-heading font-black text-3xl sm:text-4xl text-[#8bf500]">$3 USD</span>
+                <span className="font-heading font-black text-3xl sm:text-4xl text-[#8bf500]">$5 USD</span>
               </div>
             </div>
 
@@ -194,7 +193,7 @@ export default function HeroSection({ remainingSlots, onOpenCheckout }: HeroSect
               className="w-full sm:w-auto relative group overflow-hidden rounded-2xl bg-[#8bf500] text-black font-heading font-black text-lg sm:text-xl px-8 sm:px-12 py-5 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] shadow-2xl shadow-[#8bf500]/40 hover:shadow-[#8bf500]/70 flex items-center justify-center gap-3 cursor-pointer"
             >
               <Zap className="w-6 h-6 fill-black group-hover:rotate-12 transition-transform" />
-              <span>¡QUIERO MI PACK POR $3 USD AHORA!</span>
+              <span>¡QUIERO MI PACK POR $5 USD AHORA!</span>
               <ArrowRight className="w-6 h-6 group-hover:translate-x-1.5 transition-transform" />
             </button>
 
@@ -243,7 +242,8 @@ export default function HeroSection({ remainingSlots, onOpenCheckout }: HeroSect
           </div>
         </div>
 
-        {/* Interactive Replica of the Flyer Graphic Showcase */}
+        {false && (
+        /* Interactive Replica of the Flyer Graphic Showcase */
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -448,6 +448,7 @@ export default function HeroSection({ remainingSlots, onOpenCheckout }: HeroSect
           </div>
 
         </motion.div>
+        )}
 
       </div>
     </section>

@@ -62,7 +62,7 @@ export default function LiveNotificationToast({ onOpenCheckout }: { onOpenChecko
               <span className="text-[10px] text-[#8bf500] font-mono">{currentNotification.time}</span>
             </div>
             <p className="text-slate-300 text-[11px] truncate mt-0.5">
-              ¡Compró el <span className="text-[#8bf500] font-bold">Pack Creador ($3 USD)</span>!
+              ¡Compró el <span className="text-[#8bf500] font-bold">Pack Creador ($5 USD)</span>!
             </p>
             <div className="flex items-center gap-1 text-[10px] text-slate-400 mt-1">
               <Sparkles className="w-3 h-3 text-[#8bf500]" />

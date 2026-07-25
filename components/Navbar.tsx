@@ -40,7 +40,7 @@ export default function Navbar({ remainingSlots, onOpenCheckout }: NavbarProps) 
               LO<span className="text-[#8bf500]">EDITAMOS</span>
             </span>
             <span className="text-[10px] text-slate-400 font-mono tracking-wider uppercase -mt-1">
-              PACK CREADOR $3 USD
+              PACK CREADOR $5 USD
             </span>
           </div>
         </a>
@@ -79,7 +79,7 @@ export default function Navbar({ remainingSlots, onOpenCheckout }: NavbarProps) 
             className="relative group overflow-hidden rounded-xl bg-[#8bf500] text-black font-heading font-extrabold text-xs sm:text-sm px-4 sm:px-5 py-2.5 transition-all duration-200 hover:scale-[1.03] active:scale-[0.98] shadow-lg shadow-[#8bf500]/30 hover:shadow-[#8bf500]/50 flex items-center gap-2 cursor-pointer"
           >
             <Lock className="w-3.5 h-3.5" />
-            <span>CONSEGUIR POR $3 USD</span>
+            <span>CONSEGUIR POR $5 USD</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>

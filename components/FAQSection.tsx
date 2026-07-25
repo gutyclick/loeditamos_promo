@@ -10,11 +10,11 @@ export default function FAQSection() {
   const faqs = [
     {
       q: '¿Cómo entrego la información, fotos o referencias de mi canal?',
-      a: 'Al completar el pago único de $3 USD, se abrirá un formulario inmediato en pantalla donde podrás ingresar el nombre de tu canal, tu temática y adjuntar tus fotos o enlaces. También tendrás acceso a nuestro WhatsApp oficial para chatear directamente con nuestro equipo de diseño.',
+      a: 'Al solicitar tu Pack Creador de $5 USD, se abrirá un formulario inmediato en pantalla donde podrás ingresar el nombre de tu canal, tu temática y tus indicaciones. Al enviarlo, podrás chatear directamente con nuestro equipo de diseño por WhatsApp.',
     },
     {
-      q: '¿Es realmente un pago único de $3.00 USD sin suscripciones?',
-      a: 'Sí, 100% garantizado. Pagas exactamente $3.00 USD una sola vez y recibes tus 5 miniaturas, 1 banner HD y las 2 fotos de perfil. Sin membresías mensuales ni costos sorpresa.',
+      q: '¿El Pack Creador cuesta realmente $5.00 USD sin suscripciones?',
+      a: 'Sí, 100% garantizado. El precio es exactamente $5.00 USD por tus 5 miniaturas, 1 banner HD y las 2 fotos de perfil. Sin membresías mensuales ni costos sorpresa. Nuestro equipo coordinará contigo el pedido y el pago directamente por WhatsApp.',
     },
     {
       q: '¿Qué pasa si mi canal recién va empezando o aún no tengo videos?',
@@ -50,7 +50,7 @@ export default function FAQSection() {
           </h2>
 
           <p className="mt-4 text-base text-slate-400 font-medium">
-            Todo lo que necesitas saber antes de asegurar tu Pack Creador por $3 USD.
+            Todo lo que necesitas saber antes de asegurar tu Pack Creador por $5 USD.
           </p>
         </div>
 
@@ -109,7 +109,7 @@ export default function FAQSection() {
           </div>
 
           <a
-            href="https://wa.me/?text=Hola%2C%20tengo%20una%20consulta%20sobre%20el%20Pack%20Creador%20de%203%20USD"
+            href="https://wa.me/15513090145?text=Hola%2C%20tengo%20una%20consulta%20sobre%20el%20Pack%20Creador%20de%205%20USD"
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs font-bold text-black bg-[#8bf500] hover:bg-[#9eff00] px-5 py-2.5 rounded-xl transition-all font-heading uppercase"

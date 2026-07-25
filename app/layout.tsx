@@ -16,10 +16,10 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: 'Pack Creador $3 USD | Mejora tu Canal en <24 hrs | LoEditamos',
-  description: 'Obtén 5 Miniaturas Pro de YouTube, 1 Banner HD, 1 Foto de Perfil YouTube y 1 Foto de Perfil Redes por solo $3 USD. Oferta exclusiva limitada a 100 cupos. Entrega en 24 horas.',
+  title: 'Pack Creador $5 USD | Mejora tu Canal en <24 hrs | LoEditamos',
+  description: 'Obtén 5 Miniaturas Pro de YouTube, 1 Banner HD, 1 Foto de Perfil YouTube y 1 Foto de Perfil Redes por solo $5 USD. Oferta exclusiva limitada a 100 cupos. Entrega en 24 horas.',
   openGraph: {
-    title: 'Pack Creador - Diseños Profesionales para tu Canal por $3 USD',
+    title: 'Pack Creador - Diseños Profesionales para tu Canal por $5 USD',
     description: '5 Miniaturas, 1 Banner, Foto de Perfil YouTube y Redes Sociales. ¡Entrega en menos de 24 horas!',
   },
 };

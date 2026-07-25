@@ -211,7 +211,7 @@ export default function NicheSimulator({ onOpenCheckout }: NicheSimulatorProps) 
               className="w-full sm:w-auto bg-[#8bf500] hover:bg-[#9eff00] text-black font-heading font-black text-xs sm:text-sm px-6 py-3 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
               <Zap className="w-4 h-4 fill-black" />
-              <span>LO QUIERO PARA MI CANAL POR $3</span>
+              <span>LO QUIERO PARA MI CANAL POR $5</span>
             </button>
           </div>
 

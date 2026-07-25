@@ -43,7 +43,7 @@ export default function StickyBottomBar({ remainingSlots, onOpenCheckout }: Stic
               <div className="min-w-0">
                 <div className="flex items-center gap-2">
                   <span className="font-heading font-black text-sm sm:text-base text-white truncate">
-                    PACK CREADOR <span className="text-[#8bf500]">$3 USD</span>
+                    PACK CREADOR <span className="text-[#8bf500]">$5 USD</span>
                   </span>
                   <span className="hidden md:inline-block bg-slate-800 text-slate-300 text-[10px] px-2 py-0.5 rounded font-mono">
                     Antes $47
@@ -63,7 +63,7 @@ export default function StickyBottomBar({ remainingSlots, onOpenCheckout }: Stic
               id="sticky-bottom-cta"
               className="bg-[#8bf500] hover:bg-[#9eff00] text-black font-heading font-black text-xs sm:text-sm px-5 sm:px-8 py-3 rounded-xl shadow-lg shadow-[#8bf500]/30 hover:scale-105 active:scale-95 transition-all flex items-center gap-2 shrink-0 cursor-pointer"
             >
-              <span>¡QUIERO MI PACK ($3)!</span>
+              <span>¡QUIERO MI PACK ($5)!</span>
               <ArrowRight className="w-4 h-4" />
             </button>
 

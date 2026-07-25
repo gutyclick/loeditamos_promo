@@ -91,7 +91,7 @@ export default function WhatIsIncluded({ onOpenCheckout }: WhatIsIncludedProps) 
           </h2>
 
           <p className="mt-4 text-base sm:text-lg text-slate-400 font-medium">
-            Un paquete gráfico valorado en <span className="text-slate-200 font-bold">$47 USD</span>, diseñado para transformar la percepción de tu canal hoy por solo <span className="text-[#8bf500] font-bold">$3 USD</span>.
+            Un paquete gráfico valorado en <span className="text-slate-200 font-bold">$47 USD</span>, diseñado para transformar la percepción de tu canal hoy por solo <span className="text-[#8bf500] font-bold">$5 USD</span>.
           </p>
         </div>
 
@@ -152,7 +152,7 @@ export default function WhatIsIncluded({ onOpenCheckout }: WhatIsIncludedProps) 
                 <div className="mt-6 pt-4 border-t border-slate-800/40 flex items-center justify-between text-xs font-bold">
                   <span className="text-slate-400 font-mono">LISTO PARA USAR EN 24H</span>
                   <span className="text-[#8bf500] flex items-center gap-1 group-hover:translate-x-1 transition-transform cursor-pointer" onClick={onOpenCheckout}>
-                    Incluido en $3 USD <ArrowRight className="w-3.5 h-3.5" />
+                    Incluido en $5 USD <ArrowRight className="w-3.5 h-3.5" />
                   </span>
                 </div>
               </motion.div>
@@ -167,7 +167,7 @@ export default function WhatIsIncluded({ onOpenCheckout }: WhatIsIncludedProps) 
               ¿Listo para transformar la cara de tu canal?
             </h3>
             <p className="text-slate-300 text-sm sm:text-base mt-2">
-              Llévate el paquete completo de 8 piezas gráficas por un único pago de <strong className="text-[#8bf500] font-bold">$3 USD</strong>. Sin trucos ni cobros recurrentes.
+              Llévate el paquete completo de 8 piezas gráficas por un único pago de <strong className="text-[#8bf500] font-bold">$5 USD</strong>. Sin trucos ni cobros recurrentes.
             </p>
           </div>
 
@@ -177,7 +177,7 @@ export default function WhatIsIncluded({ onOpenCheckout }: WhatIsIncludedProps) 
             className="w-full md:w-auto bg-[#8bf500] hover:bg-[#9eff00] text-black font-heading font-black text-base sm:text-lg px-8 py-4 rounded-2xl shadow-xl shadow-[#8bf500]/30 hover:scale-[1.03] transition-all flex items-center justify-center gap-2 shrink-0 cursor-pointer"
           >
             <Zap className="w-5 h-5 fill-black" />
-            <span>RECLAMAR MI PACK POR $3 USD</span>
+            <span>RECLAMAR MI PACK POR $5 USD</span>
           </button>
         </div>
 

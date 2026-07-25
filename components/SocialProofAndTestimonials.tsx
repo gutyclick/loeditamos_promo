@@ -12,7 +12,7 @@ export default function SocialProofAndTestimonials() {
       channel: 'Gaming & Tech (24K subs)',
       rating: 5,
       comment:
-        'Pasé de 300 visitas promedio a superar las 18,000 impresiones en mi último video. El cambio de la miniatura fue la clave total. ¡ $3 USD por todo este pack fue una locura!',
+        'Pasé de 300 visitas promedio a superar las 18,000 impresiones en mi último video. El cambio de la miniatura fue la clave total. ¡ $5 USD por todo este pack fue una locura!',
       increase: '+420% Visitas',
       avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=80',
     },
@@ -32,7 +32,7 @@ export default function SocialProofAndTestimonials() {
       channel: 'Finanzas Personales (42K subs)',
       rating: 5,
       comment:
-        'Pensé que por $3 USD sería una plantilla genérica, pero se nota el trabajo personalizado. Hicieron recortes limpios y aplicaron la psicología de color perfecta.',
+        'Pensé que por $5 USD sería una plantilla genérica, pero se nota el trabajo personalizado. Hicieron recortes limpios y aplicaron la psicología de color perfecta.',
       increase: 'CTR 3.1% ➔ 11.8%',
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
     },

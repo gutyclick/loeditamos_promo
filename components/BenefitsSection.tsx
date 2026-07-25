@@ -54,9 +54,9 @@ export default function BenefitsSection({ onOpenCheckout }: BenefitsProps) {
     },
     {
       icon: Sparkles,
-      title: 'Oferta Especial Limitada ($3 USD)',
-      desc: 'Un paquete completo valorado en $47 USD disponible por tiempo limitado para los primeros 100 creadores por el precio único de $3 USD.',
-      highlight: 'Ahorro del 93%',
+      title: 'Oferta Especial Limitada ($5 USD)',
+      desc: 'Un paquete completo valorado en $47 USD disponible por tiempo limitado para los primeros 100 creadores por el precio único de $5 USD.',
+      highlight: 'Ahorro del 89%',
     },
   ];
 
@@ -114,7 +114,7 @@ export default function BenefitsSection({ onOpenCheckout }: BenefitsProps) {
 
                 <div className="mt-6 pt-4 border-t border-slate-800/60 flex items-center gap-2 text-xs font-bold text-[#8bf500]">
                   <CheckCircle2 className="w-4 h-4 text-[#8bf500]" />
-                  <span>Incluido en tu pedido de $3 USD</span>
+                  <span>Incluido en tu pedido de $5 USD</span>
                 </div>
               </motion.div>
             );
@@ -133,7 +133,7 @@ export default function BenefitsSection({ onOpenCheckout }: BenefitsProps) {
           </h3>
 
           <p className="text-slate-300 text-base sm:text-lg mt-4 max-w-2xl mx-auto leading-relaxed">
-            Consigue tus 5 miniaturas, banner y fotos de perfil por el ridículo precio de <strong className="text-[#8bf500] font-bold">$3 dólares</strong>. Promoción activa hasta agotar los cupos restantes.
+            Consigue tus 5 miniaturas, banner y fotos de perfil por el ridículo precio de <strong className="text-[#8bf500] font-bold">$5 dólares</strong>. Promoción activa hasta agotar los cupos restantes.
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -143,7 +143,7 @@ export default function BenefitsSection({ onOpenCheckout }: BenefitsProps) {
               className="w-full sm:w-auto bg-[#8bf500] hover:bg-[#9eff00] text-black font-heading font-black text-lg px-10 py-4 rounded-2xl shadow-xl shadow-[#8bf500]/30 hover:scale-[1.03] transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
               <Zap className="w-5 h-5 fill-black" />
-              <span>SÍ, QUIERO MI PACK CREADOR POR $3 USD</span>
+              <span>SÍ, QUIERO MI PACK CREADOR POR $5 USD</span>
               <ArrowRight className="w-5 h-5" />
             </button>
           </div>

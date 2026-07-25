@@ -287,7 +287,7 @@ export default function BeforeAfterTransformation({ onOpenCheckout }: BeforeAfte
               className="w-full bg-[#8bf500] hover:bg-[#9eff00] text-black font-heading font-black text-base py-4 rounded-2xl shadow-xl shadow-[#8bf500]/30 hover:scale-[1.02] transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
               <Zap className="w-5 h-5 fill-black" />
-              <span>OBTENER MI PACK PRO POR $3 USD</span>
+              <span>OBTENER MI PACK PRO POR $5 USD</span>
             </button>
 
           </div>

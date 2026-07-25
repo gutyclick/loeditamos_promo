@@ -93,7 +93,7 @@ export default function GuaranteeFooter({ onOpenCheckout }: { onOpenCheckout: ()
               onClick={onOpenCheckout}
               className="bg-[#8bf500] hover:bg-[#9eff00] text-black font-heading font-black text-xs px-5 py-2.5 rounded-xl transition-all shadow-lg shadow-[#8bf500]/20"
             >
-              COMPRAR PACK $3 USD
+              COMPRAR PACK $5 USD
             </button>
           </div>
         </div>
