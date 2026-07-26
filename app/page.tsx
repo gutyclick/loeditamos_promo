@@ -15,9 +15,11 @@ import LiveNotificationToast from '@/components/LiveNotificationToast';
 
 export default function Home() {
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+  const [checkoutSource, setCheckoutSource] = useState('unknown');
   const [remainingSlots, setRemainingSlots] = useState(14); // 14 remaining slots of 100
 
-  const handleOpenCheckout = () => {
+  const handleOpenCheckout = (source: string) => {
+    setCheckoutSource(source);
     setIsCheckoutOpen(true);
   };
 
@@ -28,19 +30,19 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#090b0a] text-slate-100 relative selection:bg-[#8bf500] selection:text-black">
       {/* Top Navbar */}
-      <Navbar remainingSlots={remainingSlots} onOpenCheckout={handleOpenCheckout} />
+      <Navbar remainingSlots={remainingSlots} onOpenCheckout={() => handleOpenCheckout('navbar')} />
 
       {/* Hero Section */}
-      <HeroSection remainingSlots={remainingSlots} onOpenCheckout={handleOpenCheckout} />
+      <HeroSection remainingSlots={remainingSlots} onOpenCheckout={() => handleOpenCheckout('hero')} />
 
       {/* What's Included Section */}
-      <WhatIsIncluded onOpenCheckout={handleOpenCheckout} />
+      <WhatIsIncluded onOpenCheckout={() => handleOpenCheckout('included')} />
 
       {/* Before vs After Visual Transformation */}
-      <BeforeAfterTransformation onOpenCheckout={handleOpenCheckout} />
+      <BeforeAfterTransformation onOpenCheckout={() => handleOpenCheckout('before_after')} />
 
       {/* Benefits & Value Proposition */}
-      <BenefitsSection onOpenCheckout={handleOpenCheckout} />
+      <BenefitsSection onOpenCheckout={() => handleOpenCheckout('benefits')} />
 
       {/* Social Proof & Testimonials */}
       <SocialProofAndTestimonials />
@@ -49,19 +51,20 @@ export default function Home() {
       <FAQSection />
 
       {/* Footer & Guarantees */}
-      <GuaranteeFooter onOpenCheckout={handleOpenCheckout} />
+      <GuaranteeFooter onOpenCheckout={() => handleOpenCheckout('footer')} />
 
       {/* Persistent Bottom Bar on scroll */}
-      <StickyBottomBar remainingSlots={remainingSlots} onOpenCheckout={handleOpenCheckout} />
+      <StickyBottomBar remainingSlots={remainingSlots} onOpenCheckout={() => handleOpenCheckout('sticky_bar')} />
 
       {/* Live Social Proof Purchase Toasts */}
-      <LiveNotificationToast onOpenCheckout={handleOpenCheckout} />
+      <LiveNotificationToast onOpenCheckout={() => handleOpenCheckout('live_notification')} />
 
       {/* Instant Checkout Order Modal */}
       <CheckoutModal
         isOpen={isCheckoutOpen}
         onClose={handleCloseCheckout}
         remainingSlots={remainingSlots}
+        source={checkoutSource}
       />
     </main>
   );

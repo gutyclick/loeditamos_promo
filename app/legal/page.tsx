@@ -58,6 +58,12 @@ export default function LegalPage() {
               continuar por WhatsApp, la información también queda sujeta a las políticas de esa plataforma.
             </p>
             <p>
+              Para evitar que una solicitud se pierda, el formulario guarda temporalmente una copia en el navegador y
+              puede enviarla a nuestro sistema de recepción antes de abrir WhatsApp. También registramos la página de
+              origen, el botón utilizado y parámetros de campaña como fuente, medio y campaña para medir nuestras
+              promociones y atender mejor cada conversación.
+            </p>
+            <p>
               No vendemos la información personal. Podemos conservar las conversaciones y archivos el tiempo
               razonablemente necesario para prestar soporte, resolver incidencias y mantener un historial del trabajo.
               El cliente puede solicitar la eliminación de sus datos escribiéndonos por WhatsApp.

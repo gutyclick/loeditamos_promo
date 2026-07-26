@@ -17,11 +17,12 @@ interface CheckoutModalProps {
   isOpen: boolean;
   onClose: () => void;
   remainingSlots: number;
+  source: string;
 }
 
 const WHATSAPP_NUMBER = '15513090145';
 
-export default function CheckoutModal({ isOpen, onClose, remainingSlots }: CheckoutModalProps) {
+export default function CheckoutModal({ isOpen, onClose, remainingSlots, source }: CheckoutModalProps) {
   const [channelName, setChannelName] = useState('');
   const [channelUrl, setChannelUrl] = useState('');
   const [projectNeeds, setProjectNeeds] = useState('');
@@ -29,13 +30,60 @@ export default function CheckoutModal({ isOpen, onClose, remainingSlots }: Check
   const handleSubmitOrder = (event: React.FormEvent) => {
     event.preventDefault();
 
+    const currentUrl = new URL(window.location.href);
+    const campaign = {
+      utmSource: currentUrl.searchParams.get('utm_source') || 'Directo',
+      utmMedium: currentUrl.searchParams.get('utm_medium') || 'No indicado',
+      utmCampaign: currentUrl.searchParams.get('utm_campaign') || 'Sin campaña',
+      utmContent: currentUrl.searchParams.get('utm_content') || 'No indicado',
+      utmTerm: currentUrl.searchParams.get('utm_term') || 'No indicado',
+    };
+    const lead = {
+      id: crypto.randomUUID(),
+      createdAt: new Date().toISOString(),
+      channelName,
+      channelUrl,
+      projectNeeds,
+      source,
+      pageUrl: currentUrl.toString(),
+      referrer: document.referrer || 'Acceso directo',
+      ...campaign,
+    };
+
     const message = [
       '¡Hola LoEditamos! Quiero solicitar el Pack Creador de $5 USD.',
       '',
       `Canal / proyecto: ${channelName}`,
       `Enlace o @handle: ${channelUrl || 'No indicado'}`,
       `Qué necesito / temática: ${projectNeeds}`,
+      '',
+      `Botón utilizado: ${source}`,
+      `Fuente: ${campaign.utmSource}`,
+      `Campaña: ${campaign.utmCampaign}`,
+      `Medio: ${campaign.utmMedium}`,
+      `Contenido: ${campaign.utmContent}`,
+      `Página de origen: ${currentUrl.toString()}`,
+      `Referencia: ${lead.referrer}`,
     ].join('\n');
+
+    try {
+      const previousLeads = JSON.parse(localStorage.getItem('loeditamos_leads') || '[]');
+      const leads = Array.isArray(previousLeads) ? previousLeads : [];
+      localStorage.setItem('loeditamos_leads', JSON.stringify([lead, ...leads].slice(0, 20)));
+    } catch {
+      // El envío por WhatsApp continúa aunque el almacenamiento local no esté disponible.
+    }
+
+    const payload = new Blob([JSON.stringify(lead)], { type: 'application/json' });
+    const queued = navigator.sendBeacon?.('/api/leads', payload) ?? false;
+    if (!queued) {
+      void fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(lead),
+        keepalive: true,
+      });
+    }
 
     window.open(
       `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,
