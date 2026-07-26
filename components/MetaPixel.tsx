@@ -3,16 +3,33 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { ShieldCheck, X } from 'lucide-react';
-import { MetaPixelFunction, trackMetaEvent } from '@/lib/metaPixel';
+import { META_CONSENT_KEY, MetaPixelFunction, trackMetaEvent } from '@/lib/metaPixel';
 
 const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID || '349518816713585';
-const CONSENT_KEY = 'loeditamos_meta_pixel_consent';
 export const META_CONSENT_EVENT = 'loeditamos:open-meta-consent';
 
 type Consent = 'accepted' | 'rejected' | null;
 
-function initializePixel() {
-  if (window.fbq) return;
+let initialContentEventsTracked = false;
+
+function trackInitialContentEvents() {
+  if (initialContentEventsTracked) return;
+  initialContentEventsTracked = true;
+  trackMetaEvent('PageView');
+  trackMetaEvent('ViewContent', {
+    content_name: 'Pack Creador',
+    content_category: 'Landing Page',
+    currency: 'USD',
+    value: 5,
+  });
+}
+
+function initializePixel(consentGranted: boolean) {
+  if (window.fbq) {
+    window.fbq('consent', consentGranted ? 'grant' : 'revoke');
+    if (consentGranted) trackInitialContentEvents();
+    return;
+  }
 
   const fbq = function (...args: unknown[]) {
     if (fbq.callMethod) {
@@ -30,6 +47,8 @@ function initializePixel() {
   window.fbq = fbq;
   window._fbq = fbq;
 
+  window.fbq('consent', consentGranted ? 'grant' : 'revoke');
+
   const script = document.createElement('script');
   script.async = true;
   script.src = 'https://connect.facebook.net/en_US/fbevents.js';
@@ -37,7 +56,7 @@ function initializePixel() {
   document.head.appendChild(script);
 
   window.fbq('init', META_PIXEL_ID);
-  trackMetaEvent('PageView');
+  if (consentGranted) trackInitialContentEvents();
 }
 
 export default function MetaPixel() {
@@ -45,16 +64,14 @@ export default function MetaPixel() {
   const [hasDecision, setHasDecision] = useState(false);
 
   useEffect(() => {
-    const savedConsent = localStorage.getItem(CONSENT_KEY) as Consent;
+    const savedConsent = localStorage.getItem(META_CONSENT_KEY) as Consent;
     setConsent(savedConsent === 'accepted' || savedConsent === 'rejected' ? savedConsent : null);
     setHasDecision(true);
 
-    if (savedConsent === 'accepted') {
-      initializePixel();
-    }
+    initializePixel(savedConsent === 'accepted');
 
     const reopenConsent = () => {
-      localStorage.removeItem(CONSENT_KEY);
+      localStorage.removeItem(META_CONSENT_KEY);
       setConsent(null);
       setHasDecision(true);
     };
@@ -64,17 +81,15 @@ export default function MetaPixel() {
   }, []);
 
   const accept = () => {
-    localStorage.setItem(CONSENT_KEY, 'accepted');
+    localStorage.setItem(META_CONSENT_KEY, 'accepted');
     setConsent('accepted');
-    initializePixel();
+    initializePixel(true);
   };
 
   const reject = () => {
-    localStorage.setItem(CONSENT_KEY, 'rejected');
+    localStorage.setItem(META_CONSENT_KEY, 'rejected');
     setConsent('rejected');
-    if (window.fbq) {
-      window.location.reload();
-    }
+    window.fbq?.('consent', 'revoke');
   };
 
   if (!hasDecision || consent !== null) return null;

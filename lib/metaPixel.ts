@@ -1,4 +1,5 @@
-export type MetaEventName = 'PageView' | 'InitiateCheckout' | 'Lead';
+export type MetaEventName = 'PageView' | 'ViewContent' | 'InitiateCheckout' | 'Lead' | 'Contact';
+export const META_CONSENT_KEY = 'loeditamos_meta_pixel_consent';
 
 export interface MetaPixelFunction {
   (...args: unknown[]): void;
@@ -18,5 +19,6 @@ declare global {
 
 export function trackMetaEvent(event: MetaEventName, parameters?: Record<string, string | number>) {
   if (typeof window === 'undefined' || !window.fbq) return;
+  if (localStorage.getItem(META_CONSENT_KEY) !== 'accepted') return;
   window.fbq('track', event, parameters);
 }

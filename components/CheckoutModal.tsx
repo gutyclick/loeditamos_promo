@@ -172,6 +172,10 @@ export default function CheckoutModal({ isOpen, onClose, remainingSlots, source 
       value: 5,
       source,
     });
+    trackMetaEvent('Contact', {
+      content_name: 'WhatsApp Pack Creador',
+      source,
+    });
 
     if (whatsappWindow) {
       whatsappWindow.opener = null;
