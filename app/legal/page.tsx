@@ -65,6 +65,13 @@ export default function LegalPage() {
               promociones y atender mejor cada conversación.
             </p>
             <p>
+              Con el consentimiento del visitante, utilizamos el píxel de Meta para registrar visitas y acciones de
+              conversión, como abrir el formulario o continuar hacia WhatsApp. Esta medición puede usar identificadores
+              del navegador sujetos a las políticas de Meta. No enviamos mediante el píxel el nombre, teléfono, correo,
+              enlace ni descripción introducidos en el formulario. El visitante puede rechazar esta medición sin
+              afectar el funcionamiento del sitio.
+            </p>
+            <p>
               No vendemos la información personal. Podemos conservar las conversaciones y archivos el tiempo
               razonablemente necesario para prestar soporte, resolver incidencias y mantener un historial del trabajo.
               El cliente puede solicitar la eliminación de sus datos escribiéndonos por WhatsApp.

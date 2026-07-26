@@ -14,6 +14,7 @@ import {
   Mail,
   Phone,
 } from 'lucide-react';
+import { trackMetaEvent } from '@/lib/metaPixel';
 
 interface CheckoutModalProps {
   isOpen: boolean;
@@ -157,6 +158,13 @@ export default function CheckoutModal({ isOpen, onClose, remainingSlots, source 
     } finally {
       setIsSubmitting(false);
     }
+
+    trackMetaEvent('Lead', {
+      content_name: 'Pack Creador',
+      currency: 'USD',
+      value: 5,
+      source,
+    });
 
     if (whatsappWindow) {
       whatsappWindow.opener = null;
