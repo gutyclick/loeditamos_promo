@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import MetaPrivacySettings from '@/components/MetaPrivacySettings';
 import Image from 'next/image';
 import {
   ShieldCheck,
@@ -121,6 +122,7 @@ export default function GuaranteeFooter({ onOpenCheckout }: { onOpenCheckout: ()
             <Link href="/legal#revisiones" className="hover:text-[#8bf500] transition-colors">
               Revisiones
             </Link>
+            <MetaPrivacySettings />
           </nav>
           <p className="uppercase text-[#8bf500]">APLICAN CONDICIONES* - OFERTA LIMITADA</p>
         </div>

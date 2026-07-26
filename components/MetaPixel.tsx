@@ -3,38 +3,29 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { ShieldCheck, X } from 'lucide-react';
-import { trackMetaEvent } from '@/lib/metaPixel';
+import { MetaPixelFunction, trackMetaEvent } from '@/lib/metaPixel';
 
 const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID || '349518816713585';
 const CONSENT_KEY = 'loeditamos_meta_pixel_consent';
+export const META_CONSENT_EVENT = 'loeditamos:open-meta-consent';
 
 type Consent = 'accepted' | 'rejected' | null;
 
 function initializePixel() {
   if (window.fbq) return;
 
-  const fbq = (...args: unknown[]) => {
-    const pixel = fbq as typeof fbq & {
-      callMethod?: (...methodArgs: unknown[]) => void;
-      queue: unknown[][];
-      push: typeof fbq;
-      loaded: boolean;
-      version: string;
-    };
-
-    if (pixel.callMethod) {
-      pixel.callMethod(...args);
+  const fbq = function (...args: unknown[]) {
+    if (fbq.callMethod) {
+      fbq.callMethod.apply(fbq, args);
     } else {
-      pixel.queue.push(args);
+      fbq.queue.push(args);
     }
-  };
+  } as MetaPixelFunction;
 
-  Object.assign(fbq, {
-    push: fbq,
-    loaded: true,
-    version: '2.0',
-    queue: [] as unknown[][],
-  });
+  fbq.push = fbq;
+  fbq.loaded = true;
+  fbq.version = '2.0';
+  fbq.queue = [];
 
   window.fbq = fbq;
   window._fbq = fbq;
@@ -61,6 +52,15 @@ export default function MetaPixel() {
     if (savedConsent === 'accepted') {
       initializePixel();
     }
+
+    const reopenConsent = () => {
+      localStorage.removeItem(CONSENT_KEY);
+      setConsent(null);
+      setHasDecision(true);
+    };
+    window.addEventListener(META_CONSENT_EVENT, reopenConsent);
+
+    return () => window.removeEventListener(META_CONSENT_EVENT, reopenConsent);
   }, []);
 
   const accept = () => {
@@ -72,6 +72,9 @@ export default function MetaPixel() {
   const reject = () => {
     localStorage.setItem(CONSENT_KEY, 'rejected');
     setConsent('rejected');
+    if (window.fbq) {
+      window.location.reload();
+    }
   };
 
   if (!hasDecision || consent !== null) return null;

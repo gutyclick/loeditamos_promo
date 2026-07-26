@@ -1,9 +1,18 @@
 export type MetaEventName = 'PageView' | 'InitiateCheckout' | 'Lead';
 
+export interface MetaPixelFunction {
+  (...args: unknown[]): void;
+  callMethod?: (...args: unknown[]) => void;
+  queue: unknown[][];
+  push: MetaPixelFunction;
+  loaded: boolean;
+  version: string;
+}
+
 declare global {
   interface Window {
-    fbq?: (...args: unknown[]) => void;
-    _fbq?: (...args: unknown[]) => void;
+    fbq?: MetaPixelFunction;
+    _fbq?: MetaPixelFunction;
   }
 }
 
