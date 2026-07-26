@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
+import RealWorkShowcase from '@/components/RealWorkShowcase';
 import WhatIsIncluded from '@/components/WhatIsIncluded';
 import BeforeAfterTransformation from '@/components/BeforeAfterTransformation';
 import BenefitsSection from '@/components/BenefitsSection';
@@ -34,6 +35,9 @@ export default function Home() {
 
       {/* Hero Section */}
       <HeroSection remainingSlots={remainingSlots} onOpenCheckout={() => handleOpenCheckout('hero')} />
+
+      {/* Real client work showcase */}
+      <RealWorkShowcase onOpenCheckout={() => handleOpenCheckout('real_work_showcase')} />
 
       {/* What's Included Section */}
       <WhatIsIncluded onOpenCheckout={() => handleOpenCheckout('included')} />
