@@ -92,6 +92,13 @@ export default function CheckoutModal({ isOpen, onClose, remainingSlots, source 
     event.preventDefault();
     setIsSubmitting(true);
 
+    trackMetaEvent('InitiateCheckout', {
+      content_name: 'Pack Creador',
+      currency: 'USD',
+      value: 5,
+      source,
+    });
+
     const currentUrl = new URL(window.location.href);
     const campaign = {
       utmSource: currentUrl.searchParams.get('utm_source') || 'Directo',

@@ -13,7 +13,6 @@ import GuaranteeFooter from '@/components/GuaranteeFooter';
 import StickyBottomBar from '@/components/StickyBottomBar';
 import CheckoutModal from '@/components/CheckoutModal';
 import LiveNotificationToast from '@/components/LiveNotificationToast';
-import { trackMetaEvent } from '@/lib/metaPixel';
 
 export default function Home() {
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
@@ -21,12 +20,6 @@ export default function Home() {
   const [remainingSlots, setRemainingSlots] = useState(14); // 14 remaining slots of 100
 
   const handleOpenCheckout = (source: string) => {
-    trackMetaEvent('InitiateCheckout', {
-      content_name: 'Pack Creador',
-      currency: 'USD',
-      value: 5,
-      source,
-    });
     setCheckoutSource(source);
     setIsCheckoutOpen(true);
   };
