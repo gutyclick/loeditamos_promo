@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { motion } from 'motion/react';
 import {
   TrendingUp,
@@ -93,18 +94,15 @@ export default function BeforeAfterTransformation({ onOpenCheckout }: BeforeAfte
             {/* Simulated Banner */}
             <div className="mt-4 relative rounded-xl overflow-hidden h-32 sm:h-40 border border-slate-800">
               {activeTab === 'after' ? (
-                <div className="w-full h-full bg-gradient-to-r from-emerald-950 via-slate-900 to-black p-4 flex flex-col justify-center items-center text-center relative">
-                  <img
-                    src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80"
-                    className="absolute inset-0 w-full h-full object-cover opacity-30"
-                    alt="Ejemplo de banner profesional para un canal de YouTube"
+                <div className="w-full h-full bg-black relative">
+                  <Image
+                    src="/banner-despues.png"
+                    alt="Banner profesional de Manu Emprende para un canal de finanzas y emprendimiento"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 650px"
+                    quality={85}
+                    className="object-cover object-center"
                   />
-                  <span className="relative z-10 font-heading font-black text-xl sm:text-3xl text-white tracking-widest uppercase">
-                    CREADOR PRO <span className="text-[#8bf500]">⚡</span>
-                  </span>
-                  <span className="relative z-10 text-[11px] text-[#8bf500] font-mono tracking-widest mt-1 uppercase font-bold">
-                    NUEVO VIDEO CADA SEMANA • TUTORIALES & ESTRATEGIA
-                  </span>
                 </div>
               ) : (
                 <div className="w-full h-full bg-slate-800 p-4 flex flex-col justify-center items-center text-center text-slate-500">
