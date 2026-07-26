@@ -55,9 +55,6 @@ export default function Navbar({ remainingSlots, onOpenCheckout }: NavbarProps) 
           <a href="#transformacion" className="hover:text-[#8bf500] transition-colors">
             Antes vs Después
           </a>
-          <a href="#simulador" className="hover:text-[#8bf500] transition-colors">
-            Simulador
-          </a>
           <a href="#beneficios" className="hover:text-[#8bf500] transition-colors">
             Beneficios
           </a>

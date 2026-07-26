@@ -5,7 +5,6 @@ import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import WhatIsIncluded from '@/components/WhatIsIncluded';
 import BeforeAfterTransformation from '@/components/BeforeAfterTransformation';
-import NicheSimulator from '@/components/NicheSimulator';
 import BenefitsSection from '@/components/BenefitsSection';
 import SocialProofAndTestimonials from '@/components/SocialProofAndTestimonials';
 import FAQSection from '@/components/FAQSection';
@@ -39,9 +38,6 @@ export default function Home() {
 
       {/* Before vs After Visual Transformation */}
       <BeforeAfterTransformation onOpenCheckout={handleOpenCheckout} />
-
-      {/* Interactive Channel Niche Simulator */}
-      <NicheSimulator onOpenCheckout={handleOpenCheckout} />
 
       {/* Benefits & Value Proposition */}
       <BenefitsSection onOpenCheckout={handleOpenCheckout} />
