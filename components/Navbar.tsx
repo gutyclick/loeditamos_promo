@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
-import { Zap, ShieldCheck, Flame, ArrowRight, Lock } from 'lucide-react';
+import Image from 'next/image';
+import { Flame, ArrowRight, Lock } from 'lucide-react';
 
 interface NavbarProps {
   remainingSlots: number;
@@ -32,14 +32,16 @@ export default function Navbar({ remainingSlots, onOpenCheckout }: NavbarProps) 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Logo */}
         <a href="#" className="flex items-center gap-2.5 group" id="brand-logo-link">
-          <div className="w-9 h-9 rounded-xl bg-black border border-[#8bf500]/60 flex items-center justify-center glow-lime group-hover:scale-105 transition-transform">
-            <Zap className="w-5 h-5 text-[#8bf500] fill-[#8bf500]/20" />
-          </div>
           <div className="flex flex-col">
-            <span className="font-heading font-black text-lg sm:text-xl tracking-tight text-white flex items-center gap-1">
-              LO<span className="text-[#8bf500]">EDITAMOS</span>
-            </span>
-            <span className="text-[10px] text-slate-400 font-mono tracking-wider uppercase -mt-1">
+            <Image
+              src="/logo-loeditamos.svg"
+              alt="LoEditamos"
+              width={220}
+              height={28}
+              priority
+              className="w-28 sm:w-40 h-auto group-hover:scale-[1.02] transition-transform"
+            />
+            <span className="hidden sm:block text-[10px] text-slate-400 font-mono tracking-wider uppercase mt-0.5">
               PACK CREADOR $5 USD
             </span>
           </div>

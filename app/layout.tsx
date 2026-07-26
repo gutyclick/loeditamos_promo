@@ -58,12 +58,21 @@ export const metadata: Metadata = {
     title: 'Pack Creador por $5 USD | LoEditamos',
     description:
       '5 miniaturas, 1 banner HD y 2 fotos de perfil profesionales para transformar la imagen de tu canal.',
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'Pack Creador de LoEditamos por $5 USD',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Pack Creador por $5 USD | LoEditamos',
     description:
       '5 miniaturas, 1 banner HD y 2 fotos de perfil profesionales para transformar la imagen de tu canal.',
+    images: ['/opengraph-image'],
   },
 };
 

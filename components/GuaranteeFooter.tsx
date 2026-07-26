@@ -2,15 +2,14 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   ShieldCheck,
   Zap,
   Star,
   ShoppingBag,
   ArrowUpRight,
-  Globe,
-  Instagram,
-  Youtube
+  Globe
 } from 'lucide-react';
 
 export default function GuaranteeFooter({ onOpenCheckout }: { onOpenCheckout: () => void }) {
@@ -72,10 +71,14 @@ export default function GuaranteeFooter({ onOpenCheckout }: { onOpenCheckout: ()
 
         {/* Social Handle & Brand Section */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-10 border-b border-slate-900">
-          <div>
-            <span className="font-heading font-black text-2xl text-white tracking-widest flex items-center gap-2">
-              <span className="text-[#8bf500]">@LOEDITAMOS</span> - LOEDITAMOS.COM
-            </span>
+          <div className="flex flex-col items-center md:items-start">
+            <Image
+              src="/logo-loeditamos.svg"
+              alt="LoEditamos"
+              width={260}
+              height={33}
+              className="w-56 sm:w-64 h-auto"
+            />
             <p className="text-xs text-slate-400 mt-1">
               Agencia de Diseño y Edición para Creadores de Contenido
             </p>
