@@ -11,6 +11,8 @@ import {
   ArrowRight,
   Flame,
   User,
+  Mail,
+  Phone,
 } from 'lucide-react';
 
 interface CheckoutModalProps {
@@ -26,9 +28,13 @@ export default function CheckoutModal({ isOpen, onClose, remainingSlots, source 
   const [channelName, setChannelName] = useState('');
   const [channelUrl, setChannelUrl] = useState('');
   const [projectNeeds, setProjectNeeds] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmitOrder = (event: React.FormEvent) => {
+  const handleSubmitOrder = async (event: React.FormEvent) => {
     event.preventDefault();
+    setIsSubmitting(true);
 
     const currentUrl = new URL(window.location.href);
     const campaign = {
@@ -44,6 +50,8 @@ export default function CheckoutModal({ isOpen, onClose, remainingSlots, source 
       channelName,
       channelUrl,
       projectNeeds,
+      phone,
+      email,
       source,
       pageUrl: currentUrl.toString(),
       referrer: document.referrer || 'Acceso directo',
@@ -55,6 +63,8 @@ export default function CheckoutModal({ isOpen, onClose, remainingSlots, source 
       '',
       `Canal / proyecto: ${channelName}`,
       `Enlace o @handle: ${channelUrl || 'No indicado'}`,
+      `Teléfono: ${phone || 'No indicado'}`,
+      `Correo: ${email || 'No indicado'}`,
       `Qué necesito / temática: ${projectNeeds}`,
       '',
       `Botón utilizado: ${source}`,
@@ -74,22 +84,35 @@ export default function CheckoutModal({ isOpen, onClose, remainingSlots, source 
       // El envío por WhatsApp continúa aunque el almacenamiento local no esté disponible.
     }
 
-    const payload = new Blob([JSON.stringify(lead)], { type: 'application/json' });
-    const queued = navigator.sendBeacon?.('/api/leads', payload) ?? false;
-    if (!queued) {
-      void fetch('/api/leads', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(lead),
-        keepalive: true,
-      });
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    const whatsappWindow = window.open('', '_blank');
+
+    try {
+      await Promise.race([
+        fetch('/api/leads', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(lead),
+          keepalive: true,
+        }),
+        new Promise((resolve) => setTimeout(resolve, 3_000)),
+      ]);
+    } catch {
+      // WhatsApp se abre aunque el respaldo remoto no esté disponible.
+    } finally {
+      setIsSubmitting(false);
     }
 
-    window.open(
-      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,
-      '_blank',
-      'noopener,noreferrer',
-    );
+    if (whatsappWindow) {
+      whatsappWindow.opener = null;
+      whatsappWindow.location.href = whatsappUrl;
+    } else {
+      window.open(
+        whatsappUrl,
+        '_blank',
+        'noopener,noreferrer',
+      );
+    }
   };
 
   return (
@@ -167,6 +190,42 @@ export default function CheckoutModal({ isOpen, onClose, remainingSlots, source 
                   </div>
                 </div>
 
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold text-slate-300 uppercase mb-1">
+                      Teléfono <span className="text-slate-500 normal-case">(opcional)</span>
+                    </label>
+                    <div className="relative">
+                      <Phone className="absolute left-3.5 top-3.5 w-4 h-4 text-slate-500" />
+                      <input
+                        type="tel"
+                        value={phone}
+                        onChange={(event) => setPhone(event.target.value)}
+                        autoComplete="tel"
+                        placeholder="+1 555 000 0000"
+                        className="w-full bg-[#121613] border border-slate-700 focus:border-[#8bf500] text-white pl-10 pr-4 py-3 rounded-xl text-sm outline-none transition-all"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-slate-300 uppercase mb-1">
+                      Correo <span className="text-slate-500 normal-case">(opcional)</span>
+                    </label>
+                    <div className="relative">
+                      <Mail className="absolute left-3.5 top-3.5 w-4 h-4 text-slate-500" />
+                      <input
+                        type="email"
+                        value={email}
+                        onChange={(event) => setEmail(event.target.value)}
+                        autoComplete="email"
+                        placeholder="hola@ejemplo.com"
+                        className="w-full bg-[#121613] border border-slate-700 focus:border-[#8bf500] text-white pl-10 pr-4 py-3 rounded-xl text-sm outline-none transition-all"
+                      />
+                    </div>
+                  </div>
+                </div>
+
                 <div>
                   <label className="block text-xs font-bold text-slate-300 uppercase mb-1">
                     ¿Qué necesitas o cuál es la temática? *
@@ -203,10 +262,11 @@ export default function CheckoutModal({ isOpen, onClose, remainingSlots, source 
 
                 <button
                   type="submit"
-                  className="w-full bg-[#25D366] hover:bg-[#20ba59] text-black font-heading font-black text-lg py-4 rounded-2xl shadow-xl shadow-[#25D366]/20 hover:scale-[1.01] transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  disabled={isSubmitting}
+                  className="w-full bg-[#25D366] hover:bg-[#20ba59] disabled:opacity-70 disabled:cursor-wait text-black font-heading font-black text-lg py-4 rounded-2xl shadow-xl shadow-[#25D366]/20 hover:scale-[1.01] transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <MessageSquare className="w-5 h-5 fill-black" />
-                  <span>SOLICITAR MI PACK POR WHATSAPP</span>
+                  <span>{isSubmitting ? 'GUARDANDO SOLICITUD...' : 'SOLICITAR MI PACK POR WHATSAPP'}</span>
                   <ArrowRight className="w-5 h-5" />
                 </button>
 

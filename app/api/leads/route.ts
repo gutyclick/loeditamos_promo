@@ -16,11 +16,13 @@ export async function POST(request: Request) {
   }
 
   const lead = {
-    id: clean(input.id),
-    createdAt: clean(input.createdAt),
+    id: clean(input.id) || crypto.randomUUID(),
+    createdAt: clean(input.createdAt) || new Date().toISOString(),
     channelName: clean(input.channelName),
     channelUrl: clean(input.channelUrl),
     projectNeeds: clean(input.projectNeeds),
+    phone: clean(input.phone),
+    email: clean(input.email),
     source: clean(input.source),
     pageUrl: clean(input.pageUrl),
     referrer: clean(input.referrer),
@@ -35,25 +37,68 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Faltan datos requeridos' }, { status: 400 });
   }
 
+  const supabaseUrl = process.env.SUPABASE_URL?.replace(/\/$/, '');
+  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
   const webhookUrl = process.env.LEAD_WEBHOOK_URL;
-  if (!webhookUrl) {
-    return NextResponse.json({ stored: false, reason: 'webhook_not_configured' }, { status: 202 });
-  }
+  let storedInSupabase = false;
+  let sentToWebhook = false;
 
-  try {
-    const response = await fetch(webhookUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(lead),
-      signal: AbortSignal.timeout(5_000),
-    });
+  if (supabaseUrl && serviceRoleKey) {
+    try {
+      const response = await fetch(`${supabaseUrl}/rest/v1/leads`, {
+        method: 'POST',
+        headers: {
+          apikey: serviceRoleKey,
+          Authorization: `Bearer ${serviceRoleKey}`,
+          'Content-Type': 'application/json',
+          Prefer: 'return=minimal',
+        },
+        body: JSON.stringify({
+          id: lead.id,
+          created_at: lead.createdAt,
+          channel_name: lead.channelName,
+          channel_url: lead.channelUrl || null,
+          project_needs: lead.projectNeeds,
+          phone: lead.phone || null,
+          email: lead.email || null,
+          source: lead.source || null,
+          page_url: lead.pageUrl || null,
+          referrer: lead.referrer || null,
+          utm_source: lead.utmSource || null,
+          utm_medium: lead.utmMedium || null,
+          utm_campaign: lead.utmCampaign || null,
+          utm_content: lead.utmContent || null,
+          utm_term: lead.utmTerm || null,
+        }),
+        signal: AbortSignal.timeout(5_000),
+      });
 
-    if (!response.ok) {
-      throw new Error(`Webhook responded ${response.status}`);
+      storedInSupabase = response.ok;
+    } catch {
+      storedInSupabase = false;
     }
-
-    return NextResponse.json({ stored: true });
-  } catch {
-    return NextResponse.json({ stored: false, reason: 'webhook_failed' }, { status: 502 });
   }
+
+  if (webhookUrl) {
+    try {
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(lead),
+        signal: AbortSignal.timeout(5_000),
+      });
+      sentToWebhook = response.ok;
+    } catch {
+      sentToWebhook = false;
+    }
+  }
+
+  return NextResponse.json(
+    {
+      stored: storedInSupabase || sentToWebhook,
+      supabase: storedInSupabase,
+      webhook: sentToWebhook,
+    },
+    { status: storedInSupabase || sentToWebhook ? 201 : 202 },
+  );
 }

@@ -51,7 +51,8 @@ export default function LegalPage() {
           <LegalSection id="privacidad" title="Política de privacidad">
             <p>
               Recopilamos únicamente la información que el cliente proporciona voluntariamente para solicitar el
-              servicio: nombre del canal o proyecto, enlace y descripción de lo que necesita.
+              servicio: nombre del canal o proyecto, enlace, descripción de lo que necesita y, cuando decida
+              proporcionarlos, teléfono y correo electrónico.
             </p>
             <p>
               Los datos se usan para responder la solicitud, preparar la propuesta, diseñar y entregar el trabajo. Al
