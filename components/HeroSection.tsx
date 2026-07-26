@@ -354,7 +354,7 @@ export default function HeroSection({ remainingSlots, onOpenCheckout }: HeroSect
                 <div className="relative h-24 sm:h-28 rounded-xl border border-[#8bf500]/40 overflow-hidden bg-black flex items-center justify-center p-3 group glow-lime">
                   <img
                     src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80"
-                    alt="Banner Preview"
+                    alt="Ejemplo de banner profesional para un canal de tecnología"
                     className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="relative z-10 text-center">
@@ -387,7 +387,7 @@ export default function HeroSection({ remainingSlots, onOpenCheckout }: HeroSect
                     <div className="relative w-12 h-12 rounded-full overflow-hidden p-0.5 bg-gradient-to-tr from-[#8bf500] to-emerald-400 shrink-0">
                       <img
                         src={currentNiche.profile}
-                        alt="Profile YT"
+                        alt="Ejemplo de foto de perfil profesional para YouTube"
                         className="w-full h-full object-cover rounded-full"
                       />
                     </div>
@@ -402,7 +402,7 @@ export default function HeroSection({ remainingSlots, onOpenCheckout }: HeroSect
                     <div className="relative w-12 h-12 rounded-full overflow-hidden p-0.5 bg-gradient-to-tr from-[#8bf500] to-lime-300 shrink-0">
                       <img
                         src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80"
-                        alt="Profile Redes"
+                        alt="Ejemplo de foto de perfil profesional para redes sociales"
                         className="w-full h-full object-cover rounded-full"
                       />
                     </div>

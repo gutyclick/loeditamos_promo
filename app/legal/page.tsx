@@ -3,8 +3,19 @@ import Link from 'next/link';
 import { ArrowLeft, FileText, MessageCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Información legal | LoEditamos',
+  title: 'Información legal',
   description: 'Políticas de privacidad, términos del servicio, reembolsos y revisiones de LoEditamos.',
+  alternates: {
+    canonical: '/legal',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'es_US',
+    url: '/legal',
+    siteName: 'LoEditamos',
+    title: 'Información legal | LoEditamos',
+    description: 'Políticas de privacidad, términos del servicio, reembolsos y revisiones de LoEditamos.',
+  },
 };
 
 const whatsappUrl =
@@ -32,7 +43,7 @@ export default function LegalPage() {
           </h1>
           <p className="mt-4 text-slate-400 leading-relaxed">
             Estas condiciones explican de forma sencilla cómo funciona el servicio del Pack Creador de LoEditamos.
-            Última actualización: 25 de julio de 2026.
+            Última actualización: 26 de julio de 2026.
           </p>
         </header>
 

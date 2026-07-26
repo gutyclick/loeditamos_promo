@@ -97,7 +97,7 @@ export default function BeforeAfterTransformation({ onOpenCheckout }: BeforeAfte
                   <img
                     src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80"
                     className="absolute inset-0 w-full h-full object-cover opacity-30"
-                    alt="After banner"
+                    alt="Ejemplo de banner profesional para un canal de YouTube"
                   />
                   <span className="relative z-10 font-heading font-black text-xl sm:text-3xl text-white tracking-widest uppercase">
                     CREADOR PRO <span className="text-[#8bf500]">⚡</span>
@@ -133,7 +133,11 @@ export default function BeforeAfterTransformation({ onOpenCheckout }: BeforeAfte
                         : 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&auto=format&fit=crop&q=80'
                     }
                     className="w-full h-full object-cover rounded-full"
-                    alt="Profile"
+                    alt={
+                      activeTab === 'after'
+                        ? 'Ejemplo de foto de perfil profesional para YouTube'
+                        : 'Ejemplo de foto de perfil antes de la optimización'
+                    }
                   />
                 </div>
 

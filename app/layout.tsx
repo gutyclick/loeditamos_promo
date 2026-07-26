@@ -16,11 +16,54 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: 'Pack Creador $5 USD | Mejora tu Canal en <24 hrs | LoEditamos',
-  description: 'Obtén 5 Miniaturas Pro de YouTube, 1 Banner HD, 1 Foto de Perfil YouTube y 1 Foto de Perfil Redes por solo $5 USD. Oferta exclusiva limitada a 100 cupos. Entrega en 24 horas.',
+  metadataBase: new URL('https://pack.loeditamos.com'),
+  title: {
+    default: 'Pack Creador por $5 USD | LoEditamos',
+    template: '%s | LoEditamos',
+  },
+  description:
+    'Transforma la imagen de tu canal con 5 miniaturas, 1 banner HD y 2 fotos de perfil profesionales por $5 USD. Entrega estimada en menos de 24 horas.',
+  keywords: [
+    'diseño para YouTube',
+    'miniaturas de YouTube',
+    'banner para YouTube',
+    'foto de perfil',
+    'diseño para creadores',
+    'Pack Creador',
+    'LoEditamos',
+  ],
+  authors: [{ name: 'LoEditamos', url: 'https://loeditamos.com' }],
+  creator: 'LoEditamos',
+  publisher: 'LoEditamos',
+  category: 'Diseño gráfico',
+  alternates: {
+    canonical: '/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
   openGraph: {
-    title: 'Pack Creador - Diseños Profesionales para tu Canal por $5 USD',
-    description: '5 Miniaturas, 1 Banner, Foto de Perfil YouTube y Redes Sociales. ¡Entrega en menos de 24 horas!',
+    type: 'website',
+    locale: 'es_US',
+    url: '/',
+    siteName: 'LoEditamos',
+    title: 'Pack Creador por $5 USD | LoEditamos',
+    description:
+      '5 miniaturas, 1 banner HD y 2 fotos de perfil profesionales para transformar la imagen de tu canal.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Pack Creador por $5 USD | LoEditamos',
+    description:
+      '5 miniaturas, 1 banner HD y 2 fotos de perfil profesionales para transformar la imagen de tu canal.',
   },
 };
 

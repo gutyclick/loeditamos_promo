@@ -172,7 +172,7 @@ export default function NicheSimulator({ onOpenCheckout }: NicheSimulatorProps) 
           <div className="relative h-36 sm:h-48 rounded-2xl overflow-hidden bg-black border border-slate-800 flex items-center justify-center p-4">
             <img
               src={activeNiche.bgImg}
-              alt="Banner preview"
+              alt={`Vista previa de banner para un canal de ${activeNiche.label}`}
               className="absolute inset-0 w-full h-full object-cover opacity-35"
             />
             <div className="relative z-10 text-center px-4">
@@ -191,7 +191,7 @@ export default function NicheSimulator({ onOpenCheckout }: NicheSimulatorProps) 
               <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full p-0.5 bg-gradient-to-tr from-[#8bf500] to-emerald-400 glow-lime shrink-0">
                 <img
                   src={activeNiche.profileImg}
-                  alt="Profile Avatar"
+                  alt={`Vista previa de foto de perfil para ${channelName || 'un canal de creador'}`}
                   className="w-full h-full object-cover rounded-full"
                 />
               </div>

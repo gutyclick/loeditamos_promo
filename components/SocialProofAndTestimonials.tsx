@@ -104,7 +104,7 @@ export default function SocialProofAndTestimonials() {
                 <div className="flex items-center gap-3">
                   <img
                     src={t.avatar}
-                    alt={t.name}
+                    alt={`Retrato de ${t.name}, creador de contenido de ${t.channel}`}
                     className="w-11 h-11 rounded-full object-cover border border-[#8bf500]/40"
                   />
                   <div>
