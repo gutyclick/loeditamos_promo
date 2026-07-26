@@ -15,7 +15,10 @@ import {
 
 export default function GuaranteeFooter({ onOpenCheckout }: { onOpenCheckout: () => void }) {
   return (
-    <footer className="bg-[#050706] border-t border-slate-900 text-slate-400 py-16 relative overflow-hidden">
+    <footer
+      id="site-footer"
+      className="bg-[#050706] border-t border-slate-900 text-slate-400 pt-16 pb-24 sm:pb-28 relative overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top Guarantee Cards Banner */}

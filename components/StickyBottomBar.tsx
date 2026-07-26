@@ -11,19 +11,35 @@ interface StickyBottomBarProps {
 
 export default function StickyBottomBar({ remainingSlots, onOpenCheckout }: StickyBottomBarProps) {
   const [show, setShow] = useState(false);
+  const [footerVisible, setFooterVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       // Show sticky bar after scrolling 400px
       setShow(window.scrollY > 400);
     };
+
+    const footer = document.getElementById('site-footer');
+    const observer = footer
+      ? new IntersectionObserver(
+          ([entry]) => setFooterVisible(entry.isIntersecting),
+          { threshold: 0.05 },
+        )
+      : null;
+
+    if (footer && observer) observer.observe(footer);
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      observer?.disconnect();
+    };
   }, []);
 
   return (
     <AnimatePresence>
-      {show && (
+      {show && !footerVisible && (
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
