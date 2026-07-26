@@ -105,11 +105,15 @@ export default function BeforeAfterTransformation({ onOpenCheckout }: BeforeAfte
                   />
                 </div>
               ) : (
-                <div className="w-full h-full bg-slate-800 p-4 flex flex-col justify-center items-center text-center text-slate-500">
-                  <span className="font-heading font-bold text-lg text-slate-400">
-                    SIN BANNER (O IMAGEN DESCALIBRADA)
-                  </span>
-                  <span className="text-xs text-slate-500 mt-1">Texto cortado en pantallas de teléfono</span>
+                <div className="w-full h-full bg-black relative">
+                  <Image
+                    src="/banner-antes.webp"
+                    alt="Banner básico de Manuel y los consejos de inversión antes de la optimización"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 650px"
+                    quality={85}
+                    className="object-cover object-center"
+                  />
                 </div>
               )}
             </div>
@@ -141,7 +145,7 @@ export default function BeforeAfterTransformation({ onOpenCheckout }: BeforeAfte
 
                 <div>
                   <h4 className="font-heading font-black text-base sm:text-lg text-white">
-                    Tu Canal de YouTube
+                    Manu Emprende
                   </h4>
                   <p className="text-xs text-slate-400">
                     {activeTab === 'after' ? '12.4K suscriptores • 140 videos' : '1.2K suscriptores'}
@@ -184,16 +188,18 @@ export default function BeforeAfterTransformation({ onOpenCheckout }: BeforeAfte
                     </div>
 
                     <div className="bg-[#121613] rounded-xl overflow-hidden border border-[#8bf500]/40 p-1">
-                      <div className="relative aspect-video bg-gradient-to-br from-[#122207] to-black rounded-lg p-2 flex flex-col justify-between">
-                        <span className="bg-[#8bf500] text-black font-black text-[9px] px-1.5 py-0.5 rounded self-start">
-                          CTR PRO
-                        </span>
-                        <p className="font-heading font-black text-xs text-white">
-                          SECRETO PARA MÁS VISITAS
-                        </p>
+                      <div className="relative aspect-video bg-black rounded-lg overflow-hidden">
+                        <Image
+                          src="/miniatura-2-despues.webp"
+                          alt="Miniatura profesional Las 3 leyes del ahorro para un canal de finanzas"
+                          fill
+                          sizes="(max-width: 1024px) 50vw, 320px"
+                          quality={85}
+                          className="object-cover"
+                        />
                       </div>
                       <div className="p-2 text-[10px] text-slate-300">
-                        <p className="font-bold text-white truncate">Estrategia de miniaturas 2026</p>
+                        <p className="font-bold text-white truncate">Las 3 leyes del ahorro</p>
                         <p className="text-[#8bf500] font-mono mt-0.5">82K visitas • hace 5 días (CTR 14.1%)</p>
                       </div>
                     </div>
@@ -201,25 +207,35 @@ export default function BeforeAfterTransformation({ onOpenCheckout }: BeforeAfte
                 ) : (
                   <>
                     <div className="bg-slate-900 rounded-xl overflow-hidden border border-slate-800 p-1 opacity-60">
-                      <div className="aspect-video bg-slate-800 rounded-lg p-2 flex items-center justify-center text-center">
-                        <p className="text-[10px] text-slate-400 italic">
-                          Texto pequeño ilegible, sin rostro recortado
-                        </p>
+                      <div className="relative aspect-video bg-slate-800 rounded-lg overflow-hidden">
+                        <Image
+                          src="/miniatura-1-antes.webp"
+                          alt="Miniatura básica sobre cómo invertir antes de la optimización"
+                          fill
+                          sizes="(max-width: 1024px) 50vw, 320px"
+                          quality={80}
+                          className="object-cover"
+                        />
                       </div>
                       <div className="p-2 text-[10px] text-slate-400">
-                        <p className="truncate">Mi video de hoy tutorial #3</p>
+                        <p className="truncate">Así es como invertí con estos datos</p>
                         <p className="text-rose-400 font-mono mt-0.5">140 visitas • hace 3 semanas (CTR 1.4%)</p>
                       </div>
                     </div>
 
                     <div className="bg-slate-900 rounded-xl overflow-hidden border border-slate-800 p-1 opacity-60">
-                      <div className="aspect-video bg-slate-800 rounded-lg p-2 flex items-center justify-center text-center">
-                        <p className="text-[10px] text-slate-400 italic">
-                          Fondo oscuro sin contraste ni luz
-                        </p>
+                      <div className="relative aspect-video bg-slate-800 rounded-lg overflow-hidden">
+                        <Image
+                          src="/miniatura-2-antes.webp"
+                          alt="Miniatura básica sobre ahorro antes de la optimización"
+                          fill
+                          sizes="(max-width: 1024px) 50vw, 320px"
+                          quality={80}
+                          className="object-cover"
+                        />
                       </div>
                       <div className="p-2 text-[10px] text-slate-400">
-                        <p className="truncate">Consejos para YouTube</p>
+                        <p className="truncate">3 leyes del ahorro para invertir mejor</p>
                         <p className="text-rose-400 font-mono mt-0.5">89 visitas • hace 1 mes (CTR 1.1%)</p>
                       </div>
                     </div>
