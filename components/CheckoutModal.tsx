@@ -219,7 +219,7 @@ export default function CheckoutModal({ isOpen, onClose, remainingSlots, source 
               ref={closeButtonRef}
               type="button"
               onClick={onClose}
-              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-800/80 hover:bg-[#8bf500] text-slate-300 hover:text-black flex items-center justify-center transition-colors cursor-pointer"
+              className="fixed sm:absolute top-3 right-3 sm:top-4 sm:right-4 z-20 w-11 h-11 sm:w-9 sm:h-9 rounded-full bg-slate-800/95 border border-slate-600 sm:border-0 shadow-xl sm:shadow-none hover:bg-[#8bf500] text-slate-200 hover:text-black flex items-center justify-center transition-colors cursor-pointer"
               aria-label="Cerrar"
             >
               <X className="w-5 h-5" />
