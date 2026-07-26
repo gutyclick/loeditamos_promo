@@ -3,7 +3,8 @@
   <!-- Generator: Adobe Illustrator 30.6.0, SVG Export Plug-In . SVG Version: 2.1.4 Build 109)  -->
   <defs>
     <style>
-      path {
+      path,
+      rect {
         fill: #ffffff;
       }
       .st0 {
