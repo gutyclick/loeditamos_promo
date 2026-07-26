@@ -101,7 +101,7 @@ export default function BeforeAfterTransformation({ onOpenCheckout }: BeforeAfte
                     fill
                     sizes="(max-width: 1024px) 100vw, 650px"
                     quality={85}
-                    className="object-cover object-[center_45%]"
+                    className="object-cover object-[center_40%]"
                   />
                 </div>
               ) : (
@@ -167,16 +167,18 @@ export default function BeforeAfterTransformation({ onOpenCheckout }: BeforeAfte
                 {activeTab === 'after' ? (
                   <>
                     <div className="bg-[#121613] rounded-xl overflow-hidden border border-[#8bf500]/40 p-1">
-                      <div className="relative aspect-video bg-gradient-to-br from-purple-900 to-black rounded-lg p-2 flex flex-col justify-between">
-                        <span className="bg-[#8bf500] text-black font-black text-[9px] px-1.5 py-0.5 rounded self-start">
-                          NUEVO 2026
-                        </span>
-                        <p className="font-heading font-black text-xs text-white">
-                          CÓMO CRECER RÁPIDO Y VIRALIZAR
-                        </p>
+                      <div className="relative aspect-video bg-black rounded-lg overflow-hidden">
+                        <Image
+                          src="/miniatura-1-despues.webp"
+                          alt="Miniatura profesional Decidí invertir para un canal de finanzas"
+                          fill
+                          sizes="(max-width: 1024px) 50vw, 320px"
+                          quality={85}
+                          className="object-cover"
+                        />
                       </div>
                       <div className="p-2 text-[10px] text-slate-300">
-                        <p className="font-bold text-white truncate">Cómo hacerte viral en YouTube</p>
+                        <p className="font-bold text-white truncate">Decidí invertir: invierte sin miedo</p>
                         <p className="text-[#8bf500] font-mono mt-0.5">48K visitas • hace 2 días (CTR 12.4%)</p>
                       </div>
                     </div>
