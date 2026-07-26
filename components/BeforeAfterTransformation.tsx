@@ -45,10 +45,11 @@ export default function BeforeAfterTransformation({ onOpenCheckout }: BeforeAfte
 
         {/* Tab Selector */}
         <div className="flex justify-center mb-10">
-          <div className="bg-[#121613] p-1.5 rounded-2xl border border-slate-800 flex items-center gap-2">
+          <div className="w-full sm:w-auto bg-[#121613] p-1.5 rounded-2xl border border-slate-800 flex flex-col sm:flex-row items-stretch sm:items-center gap-2" role="group" aria-label="Comparar antes y después">
             <button
               onClick={() => setActiveTab('after')}
-              className={`px-6 py-3 rounded-xl font-heading font-bold text-sm transition-all flex items-center gap-2 ${
+              aria-pressed={activeTab === 'after'}
+              className={`w-full sm:w-auto justify-center px-4 sm:px-6 py-3 rounded-xl font-heading font-bold text-xs sm:text-sm transition-all flex items-center gap-2 ${
                 activeTab === 'after'
                   ? 'bg-[#8bf500] text-black shadow-lg shadow-[#8bf500]/30'
                   : 'text-slate-400 hover:text-white'
@@ -60,7 +61,8 @@ export default function BeforeAfterTransformation({ onOpenCheckout }: BeforeAfte
 
             <button
               onClick={() => setActiveTab('before')}
-              className={`px-6 py-3 rounded-xl font-heading font-bold text-sm transition-all flex items-center gap-2 ${
+              aria-pressed={activeTab === 'before'}
+              className={`w-full sm:w-auto justify-center px-4 sm:px-6 py-3 rounded-xl font-heading font-bold text-xs sm:text-sm transition-all flex items-center gap-2 ${
                 activeTab === 'before'
                   ? 'bg-rose-600 text-white shadow-lg'
                   : 'text-slate-400 hover:text-white'

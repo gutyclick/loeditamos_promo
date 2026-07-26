@@ -1,6 +1,7 @@
 import type {Metadata} from 'next';
 import { Plus_Jakarta_Sans, Montserrat } from 'next/font/google';
 import './globals.css';
+import ReducedMotionProvider from '@/components/ReducedMotionProvider';
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -80,7 +81,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="es" className={`${jakarta.variable} ${montserrat.variable} scroll-smooth`}>
       <body suppressHydrationWarning className="bg-[#090b0a] text-slate-100 font-sans antialiased selection:bg-[#8bf500] selection:text-black min-h-screen">
-        {children}
+        <ReducedMotionProvider>{children}</ReducedMotionProvider>
       </body>
     </html>
   );

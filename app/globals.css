@@ -50,6 +50,22 @@
   box-shadow: inset 0 0 12px rgba(139, 245, 0, 0.15);
 }
 
+:focus-visible {
+  outline: 3px solid #8bf500;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -64,4 +80,3 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #8bf500;
 }
-

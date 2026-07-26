@@ -151,9 +151,9 @@ export default function WhatIsIncluded({ onOpenCheckout }: WhatIsIncludedProps) 
 
                 <div className="mt-6 pt-4 border-t border-slate-800/40 flex items-center justify-between text-xs font-bold">
                   <span className="text-slate-400 font-mono">LISTO PARA USAR EN 24H</span>
-                  <span className="text-[#8bf500] flex items-center gap-1 group-hover:translate-x-1 transition-transform cursor-pointer" onClick={onOpenCheckout}>
+                  <button type="button" className="text-[#8bf500] flex items-center gap-1 group-hover:translate-x-1 transition-transform cursor-pointer" onClick={onOpenCheckout}>
                     Incluido en $5 USD <ArrowRight className="w-3.5 h-3.5" />
-                  </span>
+                  </button>
                 </div>
               </motion.div>
             );

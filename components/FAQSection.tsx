@@ -67,6 +67,8 @@ export default function FAQSection() {
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${idx}`}
                   className="w-full px-6 py-5 text-left font-heading font-bold text-base sm:text-lg text-white flex items-center justify-between gap-4 cursor-pointer hover:text-[#8bf500] transition-colors"
                 >
                   <span>{faq.q}</span>
@@ -80,6 +82,7 @@ export default function FAQSection() {
                 <AnimatePresence>
                   {isOpen && (
                     <motion.div
+                      id={`faq-answer-${idx}`}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}

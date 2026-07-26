@@ -37,13 +37,15 @@ export default function LiveNotificationToast({ onOpenCheckout }: { onOpenChecko
   return (
     <AnimatePresence>
       {isVisible && currentNotification && (
-        <motion.div
+        <motion.button
+          type="button"
           initial={{ opacity: 0, y: 50, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 20, scale: 0.9 }}
-          className="fixed bottom-20 left-4 md:bottom-6 md:left-6 z-40 max-w-sm bg-[#121613]/95 backdrop-blur-md border border-[#8bf500]/40 p-3.5 rounded-2xl shadow-2xl shadow-[#8bf500]/10 flex items-center gap-3 cursor-pointer group"
+          className="fixed bottom-20 left-4 right-4 md:bottom-6 md:left-6 md:right-auto z-40 max-w-[calc(100vw-2rem)] md:max-w-sm bg-[#121613]/95 backdrop-blur-md border border-[#8bf500]/40 p-3.5 rounded-2xl shadow-2xl shadow-[#8bf500]/10 flex items-center gap-3 cursor-pointer group text-left"
           onClick={onOpenCheckout}
           id="toast-notification"
+          aria-label={`Solicitar Pack Creador. Compra reciente de ${currentNotification.name}`}
         >
           <div className="relative">
             <div className="w-10 h-10 rounded-full bg-[#8bf500]/20 border border-[#8bf500] flex items-center justify-center text-[#8bf500] group-hover:scale-110 transition-transform">
@@ -69,7 +71,7 @@ export default function LiveNotificationToast({ onOpenCheckout }: { onOpenChecko
               <span>Nicho: {currentNotification.channel}</span>
             </div>
           </div>
-        </motion.div>
+        </motion.button>
       )}
     </AnimatePresence>
   );

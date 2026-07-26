@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import React, { useEffect, useRef, useState } from 'react';
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import {
   X,
   ShieldCheck,
@@ -25,12 +25,67 @@ interface CheckoutModalProps {
 const WHATSAPP_NUMBER = '15513090145';
 
 export default function CheckoutModal({ isOpen, onClose, remainingSlots, source }: CheckoutModalProps) {
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+  const shouldReduceMotion = useReducedMotion();
   const [channelName, setChannelName] = useState('');
   const [channelUrl, setChannelUrl] = useState('');
   const [projectNeeds, setProjectNeeds] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    previousFocusRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const focusTimer = window.setTimeout(() => closeButtonRef.current?.focus(), 0);
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        onClose();
+        return;
+      }
+
+      if (event.key !== 'Tab' || !dialogRef.current) return;
+
+      const focusableElements = Array.from(
+        dialogRef.current.querySelectorAll<HTMLElement>(
+          'button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])',
+        ),
+      ).filter((element) => !element.hasAttribute('hidden'));
+
+      if (focusableElements.length === 0) {
+        event.preventDefault();
+        dialogRef.current.focus();
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.clearTimeout(focusTimer);
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+      previousFocusRef.current?.focus();
+    };
+  }, [isOpen, onClose]);
 
   const handleSubmitOrder = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -120,20 +175,30 @@ export default function CheckoutModal({ isOpen, onClose, remainingSlots, source 
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
           <motion.div
-            initial={{ opacity: 0 }}
+            initial={shouldReduceMotion ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            exit={shouldReduceMotion ? undefined : { opacity: 0 }}
             onClick={onClose}
+            aria-hidden="true"
             className="fixed inset-0 bg-black/80 backdrop-blur-md"
           />
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            ref={dialogRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="checkout-modal-title"
+            aria-describedby="checkout-modal-description"
+            tabIndex={-1}
+            initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            exit={shouldReduceMotion ? undefined : { opacity: 0, scale: 0.95, y: 20 }}
+            transition={shouldReduceMotion ? { duration: 0 } : undefined}
             className="relative w-full max-w-2xl bg-[#0d110e] border-2 border-[#8bf500]/60 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-[#8bf500]/20 z-10 my-8 overflow-hidden glow-lime"
           >
             <button
+              ref={closeButtonRef}
+              type="button"
               onClick={onClose}
               className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-800/80 hover:bg-[#8bf500] text-slate-300 hover:text-black flex items-center justify-center transition-colors cursor-pointer"
               aria-label="Cerrar"
@@ -142,16 +207,16 @@ export default function CheckoutModal({ isOpen, onClose, remainingSlots, source 
             </button>
 
             <div>
-              <div className="text-center mb-6">
+              <div className="text-center mb-6 px-4 sm:px-0">
                 <div className="inline-flex items-center gap-2 bg-[#8bf500]/10 border border-[#8bf500]/40 px-3.5 py-1 rounded-full text-xs font-bold text-[#8bf500] mb-2">
                   <Flame className="w-3.5 h-3.5 fill-[#8bf500]" />
                   <span>CUPO RESERVADO • QUEDAN {remainingSlots} DISPONIBLES</span>
                 </div>
 
-                <h3 className="font-heading font-black text-2xl sm:text-3xl text-white uppercase">
+                <h3 id="checkout-modal-title" className="font-heading font-black text-2xl sm:text-3xl text-white uppercase">
                   OBTÉN TU <span className="text-[#8bf500]">PACK CREADOR</span>
                 </h3>
-                <p className="text-slate-300 text-xs sm:text-sm mt-1">
+                <p id="checkout-modal-description" className="text-slate-300 text-xs sm:text-sm mt-1">
                   Ingresa los datos de tu canal y continúa la conversación con nuestro equipo por WhatsApp.
                 </p>
               </div>
@@ -159,12 +224,13 @@ export default function CheckoutModal({ isOpen, onClose, remainingSlots, source 
               <form onSubmit={handleSubmitOrder} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-slate-300 uppercase mb-1">
+                    <label htmlFor="channel-name" className="block text-xs font-bold text-slate-300 uppercase mb-1">
                       Nombre de tu Canal / Proyecto *
                     </label>
                     <div className="relative">
                       <User className="absolute left-3.5 top-3.5 w-4 h-4 text-slate-500" />
                       <input
+                        id="channel-name"
                         type="text"
                         required
                         value={channelName}
@@ -176,10 +242,11 @@ export default function CheckoutModal({ isOpen, onClose, remainingSlots, source 
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-300 uppercase mb-1">
+                    <label htmlFor="channel-url" className="block text-xs font-bold text-slate-300 uppercase mb-1">
                       Enlace o @Handle de YouTube / Redes
                     </label>
                       <input
+                        id="channel-url"
                         type="text"
                         required
                         value={channelUrl}
@@ -192,12 +259,13 @@ export default function CheckoutModal({ isOpen, onClose, remainingSlots, source 
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-slate-300 uppercase mb-1">
+                    <label htmlFor="phone" className="block text-xs font-bold text-slate-300 uppercase mb-1">
                       Teléfono <span className="text-slate-500 normal-case">(opcional)</span>
                     </label>
                     <div className="relative">
                       <Phone className="absolute left-3.5 top-3.5 w-4 h-4 text-slate-500" />
                       <input
+                        id="phone"
                         type="tel"
                         value={phone}
                         onChange={(event) => setPhone(event.target.value)}
@@ -209,12 +277,13 @@ export default function CheckoutModal({ isOpen, onClose, remainingSlots, source 
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-300 uppercase mb-1">
+                    <label htmlFor="email" className="block text-xs font-bold text-slate-300 uppercase mb-1">
                       Correo <span className="text-slate-500 normal-case">(opcional)</span>
                     </label>
                     <div className="relative">
                       <Mail className="absolute left-3.5 top-3.5 w-4 h-4 text-slate-500" />
                       <input
+                        id="email"
                         type="email"
                         value={email}
                         onChange={(event) => setEmail(event.target.value)}
@@ -227,10 +296,11 @@ export default function CheckoutModal({ isOpen, onClose, remainingSlots, source 
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-300 uppercase mb-1">
+                  <label htmlFor="project-needs" className="block text-xs font-bold text-slate-300 uppercase mb-1">
                     ¿Qué necesitas o cuál es la temática? *
                   </label>
                   <textarea
+                    id="project-needs"
                     rows={3}
                     required
                     value={projectNeeds}
@@ -270,7 +340,7 @@ export default function CheckoutModal({ isOpen, onClose, remainingSlots, source 
                   <ArrowRight className="w-5 h-5" />
                 </button>
 
-                <div className="flex items-center justify-center gap-3 text-[11px] text-slate-400">
+                <div className="flex flex-wrap items-center justify-center gap-3 text-[11px] text-slate-400">
                   <span className="flex items-center gap-1">
                     <ShieldCheck className="w-3.5 h-3.5 text-[#8bf500]" /> Atención directa
                   </span>

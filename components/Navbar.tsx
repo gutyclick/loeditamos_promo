@@ -39,7 +39,7 @@ export default function Navbar({ remainingSlots, onOpenCheckout }: NavbarProps) 
               width={220}
               height={28}
               priority
-              className="w-28 sm:w-40 h-auto group-hover:scale-[1.02] transition-transform"
+              className="w-24 sm:w-40 h-auto group-hover:scale-[1.02] transition-transform"
             />
             <span className="hidden sm:block text-[10px] text-slate-400 font-mono tracking-wider uppercase mt-0.5">
               PACK CREADOR $5 USD
@@ -75,11 +75,11 @@ export default function Navbar({ remainingSlots, onOpenCheckout }: NavbarProps) 
           <button
             onClick={onOpenCheckout}
             id="nav-checkout-btn"
-            className="relative group overflow-hidden rounded-xl bg-[#8bf500] text-black font-heading font-extrabold text-xs sm:text-sm px-4 sm:px-5 py-2.5 transition-all duration-200 hover:scale-[1.03] active:scale-[0.98] shadow-lg shadow-[#8bf500]/30 hover:shadow-[#8bf500]/50 flex items-center gap-2 cursor-pointer"
+            className="relative group overflow-hidden rounded-xl bg-[#8bf500] text-black font-heading font-extrabold text-[10px] sm:text-sm px-3 sm:px-5 py-2.5 transition-all duration-200 hover:scale-[1.03] active:scale-[0.98] shadow-lg shadow-[#8bf500]/30 hover:shadow-[#8bf500]/50 flex items-center gap-1.5 sm:gap-2 cursor-pointer"
           >
             <Lock className="w-3.5 h-3.5" />
             <span>SOLICITAR POR WHATSAPP</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform max-[360px]:hidden" />
           </button>
         </div>
       </div>
